@@ -3,12 +3,11 @@ import { ProductCard } from "@/components/ProductCard";
 
 export type ProductListProps = {
   products: Product[];
-  onSelectProduct: (product: Product) => void;
 };
 
 export const ProductList = ({
   products,
-  onSelectProduct,
+  // onSelectProduct,
 }: ProductListProps) => {
   return (
     <>
@@ -21,7 +20,6 @@ export const ProductList = ({
               <ProductCard
                 key={product.id}
                 product={product}
-                onSelect={() => onSelectProduct(product)}
               />
             ))}
           </div>
