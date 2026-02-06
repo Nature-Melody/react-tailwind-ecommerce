@@ -3,26 +3,18 @@ import { ProductCard } from "@/components/ProductCard";
 
 export type ProductListProps = {
   products: Product[];
-  onSelectProduct: (product: Product) => void;
 };
 
-export const ProductList = ({
-  products,
-  onSelectProduct,
-}: ProductListProps) => {
+export const ProductList = ({ products }: ProductListProps) => {
   return (
     <>
-      <div className="p-6 max-w-7xl mx-auto">
+      <div>
         <h2 className="text-2xl font-bold mb-4">Our Products</h2>
         {/* For mobile responsiveness, using grid layout */}
         {products.length !== 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onSelect={() => onSelectProduct(product)}
-              />
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         ) : (

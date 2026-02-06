@@ -1,11 +1,11 @@
 import type { Product } from "@/types/types";
+import { Link } from "react-router-dom";
 
 export type ProductCardProps = {
   product: Product;
-  onSelect: () => void;
 };
 
-export const ProductCard = ({ product, onSelect }: ProductCardProps) => {
+export const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <div className="flex flex-col items-center border rounded-xl p-4 h-full shadow hover:shadow-lg transition-all bg-white">
       {/* Image Wrapper */}
@@ -25,13 +25,7 @@ export const ProductCard = ({ product, onSelect }: ProductCardProps) => {
         ${product.price.toFixed(2)}
       </p>
 
-      {/* mt-auto pushes the button to the very bottom of the card */}
-      <button
-        onClick={onSelect}
-        className="mt-auto w-full bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 active:scale-95 transition-all duration-200"
-      >
-        View Details
-      </button>
+      <Link to={`/products/${product.id}`}>View details</Link>
     </div>
   );
 };
