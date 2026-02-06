@@ -1,19 +1,74 @@
+import { Link, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+
 export const Header = () => {
+  const { pathname } = useLocation();
+
+  const isShopPage = pathname.startsWith("/products");
+
   return (
-    <>
-      <header className="">
-        <div className="logo">
-          <img src="abc.jpg" alt="" />
+    <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+          {/* Logo */}
+          <Link to="/" className="text-2xl font-bold text-blue-600">
+            MyStore
+          </Link>
+
+          {/* Navigation + CTA */}
+          <nav className="flex items-center space-x-6">
+            <ul className="flex space-x-4 items-center">
+              <li>
+                <Link to="/" className="text-gray-700 hover:text-blue-600">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-gray-700 hover:text-blue-600">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="text-gray-700 hover:text-blue-600"
+                >
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products"
+                  className="text-gray-700 hover:text-blue-600"
+                >
+                  Products
+                </Link>
+              </li>
+            </ul>
+
+            {/* CTA */}
+            {!isShopPage ? (
+              <Link
+                to="/products"
+                className="inline-flex items-center px-4 py-2 rounded-md
+                         bg-blue-600 text-white font-medium
+                         hover:bg-blue-700 transition"
+              >
+                Shop Now
+              </Link>
+            ) : (
+              <Link to="/cart" className="text-gray-700 hover:text-blue-600">
+                <FontAwesomeIcon
+                  icon={faShoppingCart}
+                  
+                />
+                <span> Your Cart</span>
+              </Link>
+            )}
+          </nav>
         </div>
-        <nav>
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </nav>
-      </header>
-    </>
+      </div>
+    </header>
   );
 };
