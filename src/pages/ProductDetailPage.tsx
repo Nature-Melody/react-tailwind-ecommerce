@@ -1,10 +1,13 @@
 import { useParams, Link } from "react-router-dom";
 import { Products } from "@/data/mockData";
+import { useCart } from "@/hooks/useCart";
 
 export const ProductDetailPage = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // Get the product ID from the URL parameters
 
   const product = Products.find((p) => p.id === Number(id));
+
+  const { addToCart } = useCart();
 
   if (!product) {
     return <p className="p-6 text-red-500">Product not found</p>;
@@ -29,7 +32,10 @@ export const ProductDetailPage = () => {
 
           <p className="mt-4 text-gray-600">{product.description}</p>
 
-          <button className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+          <button
+            onClick={() => addToCart(product)}
+            className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+          >
             Add to Cart
           </button>
         </div>

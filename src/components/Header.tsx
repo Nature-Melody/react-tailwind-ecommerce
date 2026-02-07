@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 export const Header = () => {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation(); // Get current path
 
   const isShopPage = pathname.startsWith("/products");
 
@@ -59,10 +59,7 @@ export const Header = () => {
               </Link>
             ) : (
               <Link to="/cart" className="text-gray-700 hover:text-blue-600">
-                <FontAwesomeIcon
-                  icon={faShoppingCart}
-                  
-                />
+                <FontAwesomeIcon icon={faShoppingCart} />
                 <span> Your Cart</span>
               </Link>
             )}
