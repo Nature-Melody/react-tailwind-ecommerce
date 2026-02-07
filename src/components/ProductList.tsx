@@ -1,4 +1,4 @@
-import type { Product } from "@/types/types";
+import type { Product} from "@/types/product";
 import { ProductCard } from "@/components/ProductCard";
 
 export type ProductListProps = {
