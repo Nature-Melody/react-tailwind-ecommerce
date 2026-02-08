@@ -80,6 +80,9 @@ button:focus-visible {
   h2 {
     @apply text-2xl font-semibold;
   }
+  button {
+    @apply hover:cursor-pointer;
+  }
 }
 
 
