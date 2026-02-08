@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { CartContext } from "@/context/CartContext";
 
 export const useCart = () => {
@@ -8,5 +8,22 @@ export const useCart = () => {
     throw new Error("useCart must be used inside CartProvider");
   }
 
-  return context;
+  // Calculate total items in the cart
+
+  const totalItems = useMemo(() => {
+    return context.cartItems.reduce((total, item) => total + item.quantity, 0);
+  }, [context.cartItems]);
+
+  // Calculate total price of items in the cart
+  const totalPrices = useMemo(() => {
+    return context.cartItems.reduce(
+      (total, item) => total + item.quantity * item.product.price,
+      0,
+    );
+  }, [context.cartItems]);
+  return {
+    ...context,
+    totalPrices,
+    totalItems,
+  };
 };
