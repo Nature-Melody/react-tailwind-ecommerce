@@ -13,3 +13,5 @@ export const UserLayout = () => {
     </>
   );
 };
+
+UserLayout.whyDidYouRender = true; // Use for tracking re-render of this component

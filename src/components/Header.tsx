@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { CartIcon } from "./CartIcon";
+import { ShopNowButton } from "./ShopNowButton";
 
 export const Header = () => {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation(); // Get current path
 
   const isShopPage = pathname.startsWith("/products");
 
@@ -48,27 +48,12 @@ export const Header = () => {
             </ul>
 
             {/* CTA */}
-            {!isShopPage ? (
-              <Link
-                to="/products"
-                className="inline-flex items-center px-4 py-2 rounded-md
-                         bg-blue-600 text-white font-medium
-                         hover:bg-blue-700 transition"
-              >
-                Shop Now
-              </Link>
-            ) : (
-              <Link to="/cart" className="text-gray-700 hover:text-blue-600">
-                <FontAwesomeIcon
-                  icon={faShoppingCart}
-                  
-                />
-                <span> Your Cart</span>
-              </Link>
-            )}
+            {!isShopPage ? <ShopNowButton /> : <CartIcon />}
           </nav>
         </div>
       </div>
     </header>
   );
 };
+
+Header.whyDidYouRender = true; // Use for tracking re-render of this component
