@@ -1,4 +1,71 @@
-# React + TypeScript + Vite
+# React TS E-commerce Website
+
+Personal learning project to practice:
+
+- React + TypeScript
+- Component design & state management
+- Tailwind CSS
+- Custom hooks & context
+- UX thinking for e-commerce flows
+
+---
+
+## Project Goals
+
+- Build an e-commerce UI without backend (for now)
+- Keep UI components dumb, logic centralized
+- Avoid tutorial-copying, learn by implementing features
+
+---
+
+## Key Design Decisions
+
+- Cart state is managed globally using CartContext
+- Pages (CartPage, ProductDetail) do not own business logic
+- Reusable UI components (e.g. ReuleauxButton)
+- Tailwind CSS for styling instead of traditional CSS files
+
+---
+
+## Notable Components
+
+- **ReuleauxButton**  
+  Custom SVG-based button inspired by Reuleaux triangle, used for quantity control.
+
+---
+
+## Folder Structure (simplified)
+
+- `components/` – reusable UI components
+- `pages/` – route-level components
+- `context/` – global state (Cart)
+- `hooks/` – custom hooks (useCart)
+- `types/` – shared domain types
+- `debug/` - use during development of project
+
+---
+
+## Tech Stack
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+
+---
+
+## Development Notes
+
+- Backend (Spring Boot) will be added later
+- Cart logic is currently in-memory only
+- Use whyDidYouRender for manage the re-render of specific components
+
+---
+
+## Vite + React Template (default)
+
+This project was bootstrapped with Vite.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -17,9 +84,9 @@ If you are developing a production application, we recommend updating the config
 
 ```js
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(["dist"]),
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     extends: [
       // Other configs...
 
@@ -34,40 +101,40 @@ export default defineConfig([
     ],
     languageOptions: {
       parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
         tsconfigRootDir: import.meta.dirname,
       },
       // other options...
     },
   },
-])
+]);
 ```
 
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
 // eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+import reactX from "eslint-plugin-react-x";
+import reactDom from "eslint-plugin-react-dom";
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(["dist"]),
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     extends: [
       // Other configs...
       // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
+      reactX.configs["recommended-typescript"],
       // Enable lint rules for React DOM
       reactDom.configs.recommended,
     ],
     languageOptions: {
       parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
         tsconfigRootDir: import.meta.dirname,
       },
       // other options...
     },
   },
-])
+]);
 ```
